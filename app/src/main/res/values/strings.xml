@@ -1,41 +1,51 @@
 <resources>
     <string name="app_name">Art Space</string>
 
-    <!--PHOTO 1-->
-    <string name="denji">Denji</string>
-    <string name="denji_year">2023</string>
-    <!--PHOTO 2-->
-    <string name="zero_two">Zero Two</string>
-    <string name="zero_two_year">2021</string>
-    <!--PHOTO 3-->
-    <string name="sanji">Sanji</string>
-    <string name="sanji_year">2022</string>
-    <!--PHOTO 4-->
-    <string name="naruto">Naruto</string>
-    <string name="naruto_year">2020</string>
-    <!--PHOTO 5-->
-    <string name="p5">Naruto</string>
-    <string name="p5_year">2020</string>
-    <!--PHOTO 6-->
-    <string name="p6">Naruto</string>
-    <string name="p6_year">2020</string>
-    <!--PHOTO 7-->
-    <string name="p7">Naruto</string>
-    <string name="p7_year">2020</string>
-    <!--PHOTO 8-->
-    <string name="p8">Naruto</string>
-    <string name="p8_year">2020</string>
-    <!--PHOTO 9-->
-    <string name="p9">Naruto</string>
-    <string name="p9_year">2020</string>
-    <!--PHOTO 10-->
-    <string name="p10">Naruto</string>
-    <string name="p10_year">2020</string>
+    <!--PHOTO 1 SMALL BETO-->
+    <string name="small_beto">Small Beto</string>
+    <string name="small_beto_year">2017</string>
+    <string name="small_beto_description">Beto when he was a kitten</string>
+    <!--PHOTO 2 BETO-->
+    <string name="beto">Beto</string>
+    <string name="beto_year">2023</string>
+    <string name="beto_description">Beto now</string>
+    <!--PHOTO 3 LITTLE BRUNO-->
+    <string name="little_bruno">Little Bruno</string>
+    <string name="little_bruno_year">2018</string>
+    <string name="little_bruno_description">Bruno when he was a kitten</string>
+    <!--PHOTO 4 BRUNO-->
+    <string name="bruno">Bruno</string>
+    <string name="bruno_year">2023</string>
+    <string name="bruno_description">This is Bruno now</string>
+    <!--PHOTO 5 VM-->
+    <string name="vetusta_morla">Vetusta Morla</string>
+    <string name="vetusta_morla_year">1998</string>
+    <string name="vetusta_morla_description">Spanish indie-rock band</string>
+    <!--PHOTO 6 HA-->
+    <string name="half_alive">Half Alive</string>
+    <string name="half_alive_year">2016</string>
+    <string name="half_alive_description">American indie-pop band</string>
+    <!--PHOTO 7 TW-->
+    <string name="weeknd">The Weeknd</string>
+    <string name="weeknd_year">2009</string>
+    <string name="weeknd_description">Canadian singer</string>
+    <!--PHOTO 8 A9-->
+    <string name="asphalt">Asphalt 9</string>
+    <string name="asphalt_year">2018</string>
+    <string name="asphalt_description">Racing game</string>
+    <!--PHOTO 9 CS-->
+    <string name="cities_skylines">Cities Skylines</string>
+    <string name="cities_skylines_year">2015</string>
+    <string name="cities_skylines_description">City-building game</string>
+    <!--PHOTO 10 BB-->
+    <string name="breaking_bad">Breaking Bad</string>
+    <string name="breaking_bad_year">2008</string>
+    <string name="breaking_bad_description">American crime drama television series</string>
     <!--Botones-->
     <string name="previous_button">Previous</string>
     <string name="next_button">Next</string>
     <string name="restart_button">Restart</string>
-    <!--Datos personales-->
-    <string name="full_name">Alessandro Díaz García</string>
-    <string name="code">1940983</string>
+    <!--PERSONAL DATA-->
+    <string name="my_name_code">Alessandro Díaz García - 1940983</string>
+    <string name="my_code">1940983</string>
 </resources>

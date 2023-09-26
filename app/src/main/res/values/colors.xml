@@ -13,6 +13,7 @@
     <color name="gray_300">#ADADC8</color>
     <color name="gray_900">#16191E</color>
     <color name="clay">#f2e5c4</color>
-    <color name="dark_clay">#85785F</color>
+    <color name="dark_clay">#8F621E</color>
+    <color name="colorStatusBar">#8F621E</color>
 
 </resources>

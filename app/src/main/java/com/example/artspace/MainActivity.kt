@@ -16,10 +16,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -49,6 +53,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ArtSpaceTheme {
                 // A surface container using the 'background' color from the theme
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(id = R.color.clay)
@@ -60,71 +65,147 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+data class ArtworkInfo(val title: Int, val year: Int, val description: Int, val image: Int)
+
 @Composable
 fun ArtSpaceScreen(modifier: Modifier = Modifier) {
 
-    val firstArtwork = R.drawable.denji_face
-    val secondArtwork = R.drawable.zero_two_face
-    val thirdArtwork = R.drawable.sanji_face
-    val fourthArtwork = R.drawable.naruto_face
+    var currentArtwork by remember { mutableStateOf(1) }
 
-    var title by remember { mutableStateOf(R.string.denji) }
-    var year by remember { mutableStateOf(R.string.denji_year) }
-    var currentArtwork by remember { mutableStateOf(firstArtwork) }
-    var imageResource by remember { mutableStateOf(currentArtwork) }
+    val artworkInfo = when (currentArtwork) {
+        1 -> ArtworkInfo(
+            R.string.small_beto,
+            R.string.small_beto_year,
+            R.string.small_beto_description,
+            R.drawable.small_beto
+        )
+
+        2 -> ArtworkInfo(
+            R.string.beto,
+            R.string.beto_year,
+            R.string.beto_description,
+            R.drawable.beto
+        )
+
+        3 -> ArtworkInfo(
+            R.string.little_bruno,
+            R.string.little_bruno_year,
+            R.string.little_bruno_description,
+            R.drawable.small_bruno
+        )
+
+        4 -> ArtworkInfo(
+            R.string.bruno,
+            R.string.bruno_year,
+            R.string.bruno_description,
+            R.drawable.bruno
+        )
+
+        5 -> ArtworkInfo(
+            R.string.vetusta_morla,
+            R.string.vetusta_morla_year,
+            R.string.vetusta_morla_description,
+            R.drawable.vetusta_morla
+        )
+
+        6 -> ArtworkInfo(
+            R.string.half_alive,
+            R.string.half_alive_year,
+            R.string.half_alive_description,
+            R.drawable.half_alive
+        )
+
+        7 -> ArtworkInfo(
+            R.string.weeknd,
+            R.string.weeknd_year,
+            R.string.weeknd_description,
+            R.drawable.weeknd
+        )
+
+        8 -> ArtworkInfo(
+            R.string.asphalt,
+            R.string.asphalt_year,
+            R.string.asphalt_description,
+            R.drawable.asphalt
+        )
+
+        9 -> ArtworkInfo(
+            R.string.cities_skylines,
+            R.string.cities_skylines_year,
+            R.string.cities_skylines_description,
+            R.drawable.cities_skylines
+        )
+
+        10 -> ArtworkInfo(
+            R.string.breaking_bad,
+            R.string.breaking_bad_year,
+            R.string.breaking_bad_description,
+            R.drawable.breaking_bad
+        )
+
+        else -> ArtworkInfo(
+            R.string.breaking_bad,
+            R.string.breaking_bad_year,
+            R.string.breaking_bad_description,
+            R.drawable.breaking_bad
+        )
+    }
 
 
+    val incrementArtwork: () -> Unit = {
+        currentArtwork = (currentArtwork % 10) + 1
+    }
+
+    val decreaseArtwork: () -> Unit = {
+        if (currentArtwork > 1) {
+            currentArtwork -= 1
+        }
+    }
+
+    val restartArtwork: () -> Unit = {
+        currentArtwork = 1
+    }
 
     Column(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-    ){
+    ) {
+        Spacer(
+            modifier = modifier.size(30.dp)
+        )
+
+        Text(
+            text = stringResource(R.string.my_name_code),
+            fontSize = 18.sp
+        )
+
         ArtworkImage(
-            currentArtwork = currentArtwork
+            currentArtwork = artworkInfo.image
         )
         Spacer(
             modifier = modifier.size(16.dp)
         )
         ArtworkTitle(
-            title = title,
-            year = year,
+            title = artworkInfo.title,
+            year = artworkInfo.year,
+            description = artworkInfo.description,
         )
         Spacer(
-            modifier = modifier.size(25.dp)
+            modifier = modifier.size(45.dp)
         )
         Row(
-            modifier = modifier.padding(horizontal = 8.dp).fillMaxWidth(),
+            modifier = modifier
+                .padding(horizontal = 10.dp)
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // BUTTON PREVIOUS --------------------------------------------------------------------
             Button(
-                onClick = {
-                    when (currentArtwork) {
-                        firstArtwork -> {
-                            currentArtwork = fourthArtwork
-                            title = R.string.naruto
-                            year = R.string.naruto_year
-                        }
-                        secondArtwork -> {
-                            currentArtwork = firstArtwork
-                            title = R.string.denji
-                            year = R.string.denji_year
-                        }
-                        thirdArtwork -> {
-                            currentArtwork = thirdArtwork
-                            title = R.string.zero_two
-                            year = R.string.zero_two_year
-                        }
-                        else -> {
-                            currentArtwork = thirdArtwork
-                            title = R.string.sanji
-                            year = R.string.sanji_year
-                        }
-                    }
-                },
+                onClick = decreaseArtwork,
 
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dark_clay)),
 
+                modifier = Modifier.width(125.dp),
                 elevation = ButtonDefaults.elevatedButtonElevation(
                     defaultElevation = 1.dp,
                     pressedElevation = 0.dp,
@@ -138,34 +219,29 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
                     color = colorResource(id = R.color.white)
                 )
             }
+
+            // BUTTON RESTART----------------------------------------------------------------------
+            IconButton(
+                onClick = restartArtwork,
+                modifier = Modifier
+                    .size(55.dp)  // Ajusta el tamaño según sea necesario
+                    .clip(CircleShape)
+                    .background(colorResource(id = R.color.dark_clay))
+                    .padding(8.dp),  // Ajusta el relleno según sea necesario
+
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.icons8_restart_100),  // Cambia a tu icono de restart
+                    contentDescription = null,  // Aquí puedes agregar una descripción si es necesario
+                    tint = colorResource(id = R.color.white)  // Cambia el color del icono si es necesario
+                )
+            }
+
             //BUTTON NEXT -------------------------------------------------------------------------
             Button(
-                onClick = {
-                    when (currentArtwork) {
-                        firstArtwork -> {
-                            currentArtwork = secondArtwork
-                            title = R.string.zero_two
-                            year = R.string.zero_two_year
-                        }
-                        secondArtwork -> {
-                            currentArtwork = thirdArtwork
-                            title = R.string.sanji
-                            year = R.string.sanji_year
-                        }
-                        thirdArtwork -> {
-                            currentArtwork = fourthArtwork
-                            title = R.string.naruto
-                            year = R.string.naruto_year
-                        }
-                        else -> {
-                            currentArtwork = firstArtwork
-                            title = R.string.denji
-                            year = R.string.denji_year
-                        }
-                    }
-                },
+                onClick = incrementArtwork,
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dark_clay)),
-
+                modifier = Modifier.width(125.dp),
                 elevation = ButtonDefaults.elevatedButtonElevation(
                     defaultElevation = 1.dp,
                     pressedElevation = 0.dp,
@@ -180,14 +256,21 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
                 )
             }
         }
+
+        Spacer(
+            modifier = modifier.size(30.dp)
+        )
+
+
     }
 }
 
 
 @Composable
-fun PreviousButton(){
+fun PreviousButton() {
 
 }
+
 @Composable
 fun ArtworkImage(
     modifier: Modifier = Modifier,
@@ -201,7 +284,7 @@ fun ArtworkImage(
             .padding(50.dp)
             .shadow(40.dp)
             .clip(shape = RoundedCornerShape(40.dp))
-            .border(2.dp, Color.Black,shape = RoundedCornerShape(40.dp)),
+            .border(2.dp, Color.Black, shape = RoundedCornerShape(40.dp)),
         contentScale = ContentScale.FillWidth
     )
 }
@@ -210,6 +293,7 @@ fun ArtworkImage(
 fun ArtworkTitle(
     @StringRes title: Int,
     @StringRes year: Int,
+    @StringRes description: Int,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -223,7 +307,13 @@ fun ArtworkTitle(
         Text(
             text = stringResource(id = year),
             fontWeight = FontWeight.Medium,
-            color = colorResource(id = R.color.gray_300),
+            color = colorResource(id = R.color.dark_clay),
+            fontSize = 16.sp,
+        )
+        Text(
+            text = stringResource(id = description),
+            fontWeight = FontWeight.Normal,
+            color = colorResource(id = R.color.black),
             fontSize = 16.sp,
         )
     }
