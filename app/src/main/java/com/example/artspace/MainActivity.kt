@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,8 +16,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,6 +30,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -44,7 +51,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = colorResource(id = R.color.clay)
                 ) {
                     ArtSpaceScreen()
                 }
@@ -65,6 +72,8 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
     var year by remember { mutableStateOf(R.string.denji_year) }
     var currentArtwork by remember { mutableStateOf(firstArtwork) }
     var imageResource by remember { mutableStateOf(currentArtwork) }
+
+
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -87,6 +96,7 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
             modifier = modifier.padding(horizontal = 8.dp).fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            // BUTTON PREVIOUS --------------------------------------------------------------------
             Button(
                 onClick = {
                     when (currentArtwork) {
@@ -112,9 +122,9 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
                         }
                     }
                 },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = colorResource(id = R.color.gray_900)
-                ),
+
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dark_clay)),
+
                 elevation = ButtonDefaults.elevatedButtonElevation(
                     defaultElevation = 1.dp,
                     pressedElevation = 0.dp,
@@ -122,12 +132,13 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
                 )
             ) {
                 Text(
-                    text = "Previous",
+                    text = stringResource(R.string.previous_button),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
                     color = colorResource(id = R.color.white)
                 )
             }
+            //BUTTON NEXT -------------------------------------------------------------------------
             Button(
                 onClick = {
                     when (currentArtwork) {
@@ -153,9 +164,8 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
                         }
                     }
                 },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = colorResource(id = R.color.gray_900)
-                ),
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dark_clay)),
+
                 elevation = ButtonDefaults.elevatedButtonElevation(
                     defaultElevation = 1.dp,
                     pressedElevation = 0.dp,
@@ -163,7 +173,7 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
                 ),
             ) {
                 Text(
-                    text = "Next",
+                    text = stringResource(R.string.next_button),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
                     color = colorResource(id = R.color.white)
@@ -173,6 +183,11 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
     }
 }
 
+
+@Composable
+fun PreviousButton(){
+
+}
 @Composable
 fun ArtworkImage(
     modifier: Modifier = Modifier,
@@ -181,7 +196,12 @@ fun ArtworkImage(
     Image(
         painter = painterResource(id = currentArtwork),
         contentDescription = null,
-        modifier = modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(50.dp)
+            .shadow(40.dp)
+            .clip(shape = RoundedCornerShape(40.dp))
+            .border(2.dp, Color.Black,shape = RoundedCornerShape(40.dp)),
         contentScale = ContentScale.FillWidth
     )
 }
@@ -197,7 +217,7 @@ fun ArtworkTitle(
         Text(
             text = stringResource(id = title),
             fontWeight = FontWeight.Bold,
-            color = colorResource(id = R.color.blue_100),
+            color = colorResource(id = R.color.dark_clay),
             fontSize = 32.sp,
         )
         Text(

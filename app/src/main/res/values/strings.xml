@@ -1,11 +1,41 @@
 <resources>
     <string name="app_name">Art Space</string>
+
+    <!--PHOTO 1-->
     <string name="denji">Denji</string>
     <string name="denji_year">2023</string>
+    <!--PHOTO 2-->
     <string name="zero_two">Zero Two</string>
     <string name="zero_two_year">2021</string>
+    <!--PHOTO 3-->
     <string name="sanji">Sanji</string>
     <string name="sanji_year">2022</string>
+    <!--PHOTO 4-->
     <string name="naruto">Naruto</string>
     <string name="naruto_year">2020</string>
+    <!--PHOTO 5-->
+    <string name="p5">Naruto</string>
+    <string name="p5_year">2020</string>
+    <!--PHOTO 6-->
+    <string name="p6">Naruto</string>
+    <string name="p6_year">2020</string>
+    <!--PHOTO 7-->
+    <string name="p7">Naruto</string>
+    <string name="p7_year">2020</string>
+    <!--PHOTO 8-->
+    <string name="p8">Naruto</string>
+    <string name="p8_year">2020</string>
+    <!--PHOTO 9-->
+    <string name="p9">Naruto</string>
+    <string name="p9_year">2020</string>
+    <!--PHOTO 10-->
+    <string name="p10">Naruto</string>
+    <string name="p10_year">2020</string>
+    <!--Botones-->
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
+    <string name="restart_button">Restart</string>
+    <!--Datos personales-->
+    <string name="full_name">Alessandro Díaz García</string>
+    <string name="code">1940983</string>
 </resources>
