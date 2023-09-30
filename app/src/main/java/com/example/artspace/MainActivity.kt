@@ -71,6 +71,7 @@ data class ArtworkInfo(val title: Int, val year: Int, val description: Int, val 
 fun ArtSpaceScreen(modifier: Modifier = Modifier) {
 
     var currentArtwork by remember { mutableStateOf(1) }
+    var maxArtwork = 10
 
     val artworkInfo = when (currentArtwork) {
         1 -> ArtworkInfo(
@@ -153,7 +154,10 @@ fun ArtSpaceScreen(modifier: Modifier = Modifier) {
 
 
     val incrementArtwork: () -> Unit = {
-        currentArtwork = (currentArtwork % 10) + 1
+        //currentArtwork = (currentArtwork % 10) + 1
+        if (currentArtwork < maxArtwork) {
+            currentArtwork += 1
+        }
     }
 
     val decreaseArtwork: () -> Unit = {
